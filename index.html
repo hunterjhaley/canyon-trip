@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.className+=' js';</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Livingston to the Grand Canyon: The Big Rig Family Run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&amp;family=Public+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+:root{
+  --sand:#F4ECDC; --card:#FFFDF7; --ink:#2B2119; --ink2:#6F604F;
+  --rust:#C14D28; --rust-d:#993A1C; --turq:#1E7A72; --turq-d:#145953;
+  --gold:#E2A42D; --line:#E3D7C0; --shadow:0 2px 10px rgba(43,33,25,.10);
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
+body{
+  background:var(--sand); color:var(--ink);
+  font-family:'Public Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:680px; margin:0 auto; padding:0 14px 90px}
+.slab{font-family:'Alfa Slab One', 'Rockwell', serif; font-weight:400; letter-spacing:.2px}
+.eyebrow{font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--rust)}
+a{color:var(--turq-d)}
+
+/* ===== HERO ===== */
+.hero{padding:26px 4px 10px; text-align:center}
+.hero .eyebrow{color:var(--turq)}
+.hero h1{font-size:clamp(30px,8.5vw,46px); line-height:1.06; margin:8px 0 4px; color:var(--ink)}
+.hero h1 .accent{color:var(--rust)}
+.hero .sub{color:var(--ink2); font-size:15px; max-width:34ch; margin:8px auto 0}
+.hero-strip{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:14px}
+.pill{background:var(--card); border:1.5px solid var(--line); border-radius:999px; padding:6px 12px; font-size:12.5px; font-weight:700; color:var(--ink); box-shadow:var(--shadow)}
+.pill b{color:var(--rust)}
+
+/* ===== TAB BAR (sticky, click to switch) ===== */
+.tabbar{
+  position:sticky; top:0; z-index:50; background:rgba(244,236,220,.97);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  margin:16px -14px 0; padding:10px 14px; border-bottom:2px solid var(--line);
+}
+.tabs{display:flex; flex-wrap:wrap; gap:6px; max-width:680px; margin:0 auto}
+.tab{
+  flex:1 1 auto; min-width:88px; min-height:54px; border:2px solid var(--ink); border-radius:12px;
+  background:var(--card); color:var(--ink); font-family:inherit; font-weight:800;
+  font-size:12px; line-height:1.15; padding:6px 4px; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center;
+  -webkit-tap-highlight-color:transparent; transition:background .12s, color .12s;
+}
+.tab .ico{font-size:17px; line-height:1}
+.tab .step{font-size:8.5px; font-weight:800; letter-spacing:.06em; color:var(--rust)}
+.tab:hover{background:#F7EFDC}
+.tab.active{background:var(--ink); color:var(--sand)}
+.tab.active .step{color:var(--gold)}
+.tab:focus-visible{outline:3px solid var(--gold); outline-offset:2px}
+.panel{padding-top:20px}
+/* No-JS fallback: all panels visible and separated. With JS: true tabs. */
+.js .panel{display:none}
+.js .panel.active{display:block}
+.panel + .panel{border-top:3px dashed var(--line); margin-top:34px}
+.js .panel + .panel{border-top:none; margin-top:0}
+
+/* ===== SECTION HEADERS ===== */
+.sec{margin:26px 0 12px}
+.sec h2{font-size:22px; line-height:1.15}
+.sec .eyebrow{display:block; margin-bottom:4px}
+.sec p.lead{color:var(--ink2); font-size:14.5px; margin-top:6px}
+
+/* ===== GENERIC CARD ===== */
+.card{background:var(--card); border:2px solid rgba(43,33,25,.14); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:14px}
+.card-body{padding:14px 16px 16px}
+.card h3{font-size:19px; line-height:1.2; margin-bottom:4px}
+.card .where{font-size:12.5px; font-weight:700; color:var(--ink2); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px}
+.card p{font-size:14.5px; color:#4A3E31}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px}
+.chip{font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; border:1.5px solid var(--line); background:var(--sand); color:var(--ink)}
+.chip.star{border-color:var(--gold); background:#FBF3DF}
+.chip.drive{border-color:var(--turq); background:#E7F2F0; color:var(--turq-d)}
+.chip.warn{border-color:var(--rust); background:#F9E8E0; color:var(--rust-d)}
+.rank{display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.07em; background:var(--gold); color:var(--ink); padding:2px 7px; border-radius:6px; text-transform:uppercase; margin-right:6px; vertical-align:2px}
+.rank.alt{background:var(--line)}
+
+/* ===== ACTION BUTTONS ===== */
+.actions{display:flex; gap:8px; margin-top:12px}
+.btn{
+  flex:1; display:flex; align-items:center; justify-content:center; gap:6px;
+  min-height:44px; border-radius:11px; text-decoration:none; font-weight:800; font-size:13.5px;
+  border:2px solid var(--ink);
+}
+.btn.solid{background:var(--turq); border-color:var(--turq); color:#fff}
+.btn.rust{background:var(--rust); border-color:var(--rust); color:#fff}
+.btn.ghost{background:transparent; color:var(--ink)}
+
+/* ===== ACCORDIONS ===== */
+details{border-top:1.5px dashed var(--line); margin-top:12px; padding-top:10px}
+summary{cursor:pointer; font-weight:800; font-size:14px; list-style:none; display:flex; align-items:center; gap:8px; min-height:34px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+'; margin-left:auto; font-family:'Alfa Slab One',serif; color:var(--rust); font-size:16px}
+details[open] summary::after{content:'\2013'}
+details .inner{padding:6px 0 4px}
+.todo{list-style:none}
+.todo li{padding:9px 0; border-bottom:1px solid #F0E8D6; font-size:14.5px}
+.todo li:last-child{border-bottom:0}
+.todo b{display:block; font-size:14.5px}
+.todo span{color:var(--ink2); font-size:13px}
+.todo a{font-weight:700}
+
+/* ===== DAY TIMELINE (the road) ===== */
+.road{position:relative; padding-left:52px; margin-top:8px}
+.road::before{
+  content:''; position:absolute; left:14px; top:6px; bottom:6px; width:12px;
+  background:#3A2E23; border-radius:8px;
+  background-image:repeating-linear-gradient(to bottom, transparent 0 12px, var(--gold) 12px 26px);
+  background-size:2.5px 100%; background-repeat:no-repeat; background-position:center;
+  background-color:#3A2E23;
+}
+.day{position:relative; margin-bottom:22px}
+.badge{
+  position:absolute; left:-52px; top:8px; width:41px; height:46px; z-index:2;
+  background:var(--card); border:2.5px solid var(--ink);
+  clip-path:polygon(0 0,100% 0,100% 68%,50% 100%,0 68%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.badge small{font-size:8px; font-weight:800; letter-spacing:.08em; color:var(--rust); margin-top:2px}
+.badge .n{font-family:'Alfa Slab One',serif; font-size:17px; line-height:1; color:var(--ink)}
+.leg{font-size:12.5px; font-weight:800; color:var(--turq-d); text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; padding-top:12px}
+
+/* ===== RIBBONS & LABELS ===== */
+.ribbon{display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:5px 10px; border-radius:7px; margin-bottom:8px}
+.ribbon.pick{background:var(--gold); color:var(--ink)}
+.ribbon.flex{background:var(--turq); color:#fff}
+.ribbon.top{background:var(--rust); color:#fff}
+.orblock{display:flex; align-items:center; gap:10px; margin:2px 0 14px; color:var(--ink2); font-weight:800; font-size:12px; letter-spacing:.15em}
+.orblock::before,.orblock::after{content:''; flex:1; border-top:2px dashed var(--line)}
+
+/* ===== ROUTE OPTION CARDS (Overview) ===== */
+.route-strip{font-size:12.5px; font-weight:700; color:var(--turq-d); background:#E7F2F0; border-radius:9px; padding:9px 11px; margin-top:10px; line-height:1.6}
+.mathrow{display:flex; gap:10px; margin-top:10px}
+.mathcell{flex:1; background:var(--sand); border:1.5px solid var(--line); border-radius:11px; padding:10px 8px; text-align:center}
+.mathcell .big{font-family:'Alfa Slab One',serif; font-size:19px; color:var(--rust)}
+.mathcell .lbl{font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--ink2)}
+
+/* season cards */
+.season{display:flex; gap:12px; align-items:flex-start}
+.season .medal{font-size:24px; line-height:1.2}
+.avoid{background:#F9E8E0; border:1.5px solid #E7B8A4; border-radius:12px; padding:11px 13px; font-size:13.5px; color:var(--rust-d); margin-top:10px}
+
+.note{background:#FBF3DF; border:1.5px solid #E9D9AC; border-radius:12px; padding:11px 13px; font-size:13.5px; margin-top:10px}
+.go{background:#E7F2F0; border:1.5px solid #BCD9D4; border-radius:12px; padding:11px 13px; font-size:13.5px; margin-top:12px; color:#1C4640}
+.go b{color:var(--turq-d)}
+.foot{margin-top:34px; text-align:center; color:var(--ink2); font-size:12.5px; padding:0 10px}
+/* ===== BUDGET ===== */
+.bline{display:flex; justify-content:space-between; align-items:baseline; padding:11px 0; border-bottom:1px solid #F0E8D6; gap:12px}
+.bline .lbl{font-weight:700; font-size:14.5px; color:var(--ink)}
+.bline .lbl small{display:block; font-weight:400; color:var(--ink2); font-size:12.5px; margin-top:2px}
+.bline .amt{font-family:'Alfa Slab One',serif; font-size:16px; color:var(--ink); white-space:nowrap}
+.bline.total{border-top:2.5px solid var(--ink); border-bottom:none; margin-top:8px; padding-top:13px}
+.bline.total .lbl{font-size:16px; font-weight:800}
+.bline.total .amt{color:var(--rust); font-size:24px}
+.split .mathcell .big{font-size:17px}
+.foot .slab{color:var(--rust); font-size:15px; display:block; margin-bottom:4px}
+svg{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="eyebrow">Two coaches &bull; Nine of us &bull; One canyon</span>
+  <h1 class="slab">Livingston <span class="accent">&rarr;</span> Grand Canyon</h1>
+  <p class="sub">A family road trip across the American Southwest in two 40 to 45 foot diesel pushers. Tap through, look at the stops, and tell us what you like.</p>
+  <div class="hero-strip">
+    <span class="pill"><b>~2,650</b> miles round trip</span>
+    <span class="pill"><b>10 to 12</b> days</span>
+    <span class="pill"><b>Ages 4 to 66</b> on board</span>
+    <span class="pill">Synced to <b>LISD</b> breaks</span>
+  </div>
+</header>
+
+
+<nav class="tabbar" aria-label="Trip sections">
+  <div class="tabs">
+    <button type="button" class="tab active" data-target="p-plan"><span class="ico">&#129517;</span><span class="step">Start</span>The Plan</button>
+    <button type="button" class="tab" data-target="p-west"><span class="ico">&#128739;&#65039;</span><span class="step">Days 1-5</span>Heading West</button>
+    <button type="button" class="tab" data-target="p-canyon"><span class="ico">&#127964;&#65039;</span><span class="step">Days 5-8</span>The Canyon</button>
+    <button type="button" class="tab" data-target="p-home"><span class="ico">&#127968;</span><span class="step">Days 8-12</span>Rolling Home</button>
+    <button type="button" class="tab" data-target="p-money"><span class="ico">&#128176;</span><span class="step">All in</span>The Money</button>
+  </div>
+</nav>
+
+<!-- ================= PANEL 1: THE PLAN ================= -->
+<section id="p-plan" class="panel active">
+
+  <div class="sec">
+    <span class="eyebrow">First things first</span>
+    <h2 class="slab">When to go</h2>
+    <p class="lead">Ranked around the official Livingston ISD 2026-27 calendar (board approved March 2026), with the leave-Thursday, come-home-Sunday plan built in. The good news up front: the Lions' fall break lands dead center in the canyon's best weather window.</p>
+  </div>
+
+  <div class="card"><div class="card-body">
+    <div class="season">
+      <div class="medal">&#129351;</div>
+      <div>
+        <h3 class="slab">Fall Break: Thu Oct 1 to Sun Oct 11, 2026</h3>
+        <div class="chips"><span class="chip star">Kids miss only 2 days</span><span class="chip">11 days</span><span class="chip drive">Best canyon weather of the year</span></div>
+        <p>LISD is closed the full week of October 5 to 9. Check the kids out Thursday and Friday (Oct 1 and 2) and we get 11 days landing in early October: summer crowds gone, monsoon season over, rim days in the 60s and 70s, and the light is unreal. One heads-up for the teachers: Oct 2 is the last day of the first nine weeks, so square grade timing with them early.</p>
+        <p style="margin-top:8px"><b>Stretch play:</b> Monday Oct 12 is a staff day with no students, so coming home Monday night makes it 12 days while still only missing 2 days of school.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="season">
+      <div class="medal">&#129352;</div>
+      <div>
+        <h3 class="slab">Spring Break: Fri Mar 12 to Sun Mar 21, 2027</h3>
+        <div class="chips"><span class="chip star">Zero school days missed</span><span class="chip">10 days</span></div>
+        <p>Spring break runs March 15 to 19, and March 12 is a staff day with no students. So leaving Friday the 12th gives us 10 full days without checking anyone out of school at all. Rim days run in the 50s with below-freezing nights, so pack layers, and there is a small late-snow chance. Bonus on the ride home: early bluebonnets in the Hill Country.</p>
+        <p style="margin-top:8px"><b>Note:</b> leaving Thursday Mar 11 makes it 11 days, but that is the last day of the grading period, so Friday is the cleaner move.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="season">
+      <div class="medal">&#129353;</div>
+      <div>
+        <h3 class="slab">Thanksgiving: Thu Nov 19 to Sun Nov 29, 2026</h3>
+        <div class="chips"><span class="chip star">Kids miss 2 days</span><span class="chip">11 days</span></div>
+        <p>Students are off the full week of November 23 to 27, and one of the two checkout days (Fri Nov 20) is an early-release day anyway. This is the quietest version of the park, crisp air and gorgeous low light. The trade: a real chance of an early winter storm at 7,000 feet, short daylight, and cold nights in the coaches.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="season">
+      <div class="medal">&#127922;</div>
+      <div>
+        <h3 class="slab">The wildcard: Christmas Break, Dec 19 to Jan 3</h3>
+        <div class="chips"><span class="chip star">Zero school missed</span><span class="chip">16 days, the biggest window</span><span class="chip warn">Riskiest coach weather</span></div>
+        <p>Students are out December 21 through January 4, which hands us 16 days without missing an hour of school. The flaw, named plainly: it is the riskiest time of year to move two 45 foot coaches. Snow and ice at the rim, hard overnight freezes on the water systems, pools closed. A snow-dusted canyon is unforgettable, but only run this version with two built-in weather flex days, heated water hoses, and the southern route in both directions to stay low.</p>
+      </div>
+    </div>
+    <div class="avoid"><b>Off the table:</b> the February 8 to 12 break (deepest winter at the rim) and the old April to May window (school is in session and STAAR testing starts April 6). Summer after school lets out May 26, 2027 works in a pinch, but it means peak crowds and monsoon season.</div>
+  </div></div>
+
+  <div class="sec">
+    <span class="eyebrow">Pick a shape</span>
+    <h2 class="slab">Three ways to run it</h2>
+    <p class="lead">Same canyon, three different trips. Tap the tabs up top to walk the stops on each leg.</p>
+  </div>
+
+  <div class="card"><div class="card-body">
+    <span class="ribbon top">Our pick</span>
+    <h3 class="slab">Option 1: The Grand Loop</h3>
+    <p>Go out on the old Route 66 corridor and come home through the desert south. You never drive the same road twice, and the kids get Cadillac Ranch, a train ride, red rocks, and sledding down white sand dunes all in one trip.</p>
+    <div class="route-strip">Livingston &rarr; Grapevine &rarr; Amarillo &rarr; Santa Fe &rarr; Williams &rarr; <b>GRAND CANYON</b> &rarr; Sedona &rarr; (Tucson) &rarr; Las Cruces &rarr; Fort Stockton &rarr; home</div>
+    <div class="chips"><span class="chip drive">~2,650 mi</span><span class="chip">All new scenery, both directions</span><span class="chip warn">Two longer drive days</span></div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Option 2: Route 66 out and back</h3>
+    <p>Same corridor both ways, but we stay at different stops in each direction, so it never feels repeated. This is the easiest version on the drivers, the 66 year old, and the little ones: no drive day over about 6 hours.</p>
+    <div class="route-strip">Out: Grapevine &rarr; Amarillo &rarr; Santa Fe &rarr; Williams. Back: Albuquerque &rarr; Palo Duro Canyon layover &rarr; Grapevine &rarr; home</div>
+    <div class="chips"><span class="chip drive">~2,300 mi</span><span class="chip">Shortest, gentlest days</span><span class="chip">Palo Duro on the return</span></div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Option 3: The reverse loop</h3>
+    <p>The Grand Loop run backwards: desert south on the way out, Route 66 home. The spring break play, since we would hit White Sands sledding and early Hill Country bluebonnets in week one while everyone is fresh, and save the canyon for the middle.</p>
+    <div class="route-strip">Livingston &rarr; Fredericksburg &rarr; Fort Stockton &rarr; Las Cruces &rarr; Tucson or Sedona &rarr; <b>GRAND CANYON</b> &rarr; Santa Fe &rarr; Amarillo &rarr; home</div>
+    <div class="chips"><span class="chip drive">~2,650 mi</span><span class="chip">Best for the March window</span></div>
+  </div></div>
+
+  <div class="sec">
+    <span class="eyebrow">The honest math</span>
+    <h2 class="slab">How the days pencil out</h2>
+  </div>
+  <div class="card"><div class="card-body">
+    <p>The base loop runs <b>10 days</b>: eight travel or explore days plus two full days at the canyon. Along the way you will see two nights tagged <span class="ribbon flex" style="margin:0">Flex Night</span>. Keep one and it is an 11 day trip. Keep both and it is an easy-paced 12. That is the whole decision.</p>
+    <div class="mathrow">
+      <div class="mathcell"><div class="big">10</div><div class="lbl">Brisk</div></div>
+      <div class="mathcell"><div class="big">11</div><div class="lbl">Right</div></div>
+      <div class="mathcell"><div class="big">12</div><div class="lbl">Easy</div></div>
+    </div>
+    <div class="note"><b>Straight talk:</b> the loop has two long days baked in (Santa Fe to Williams, and the final run home). Keeping the Tucson flex night erases the worst one. Option 2 has no long days at all.</div>
+  </div></div>
+
+  <div class="sec">
+    <span class="eyebrow">Before we roll</span>
+    <h2 class="slab">Big rig ground rules</h2>
+  </div>
+  <div class="card"><div class="card-body">
+    <ul class="todo">
+      <li><b>Every stop below fits 40 to 45 foot coaches.</b><span>All are rated 4.2 stars or better with big rig reviews checked. Pull-through or escorted parking at nearly every one.</span></li>
+      <li><b>Book the canyon nights first, and soon.</b><span>Trailer Village and October weekends fill months out, and the fall break window is under three months away. Lock the canyon dates the week we pick a window, then build everything else around them.</span></li>
+      <li><b>No tow car, on purpose.</b><span>The coaches, the canyon train, free shuttles, and two UberXLs in the cities move all nine of us. Every day below carries a teal Getting Around bar showing exactly how.</span></li>
+      <li><b>Diesel budget.</b><span>Figure roughly 350 gallons per coach round trip at 7 to 8 mpg. Ballpark $1,200 to $1,400 per coach at today's prices.</span></li>
+      <li><b>Drive days are capped near 5 hours</b><span>everywhere we could manage it, with the two exceptions flagged in red. Wheels up by 9, parked by 3, pool by 4.</span></li>
+    </ul>
+  </div></div>
+
+  <div class="sec">
+    <span class="eyebrow">No tow car needed</span>
+    <h2 class="slab">How we get around</h2>
+  </div>
+  <div class="card"><div class="card-body">
+    <ul class="todo">
+      <li><b>The coaches handle every highway stop.</b><span>Cadillac Ranch, the pie roadhouse, The Thing?, the caverns, even White Sands: all built as pull-in stops with big rig parking. No second vehicle needed.</span></li>
+      <li><b>Two UberXLs move all nine of us in the cities.</b><span>Grapevine, Santa Fe, Tucson, and Las Cruces all have solid coverage. Batch the outings: ride in once, spend the day, ride back once.</span></li>
+      <li><b>Smaller markets: schedule, don't hail.</b><span>In Santa Fe and Fredericksburg, book rides the night before with Uber Reserve so two XLs show up on time instead of hoping.</span></li>
+      <li><b>The canyon and Sedona run on trains and shuttles.</b><span>Free park shuttles and the Williams train cover the whole rim, and Sedona runs free trailhead buses plus a $2 on-demand town shuttle. The two days that looked hardest are actually the easiest.</span></li>
+    </ul>
+    <div class="note"><b>Watch the teal bars:</b> every day below has a Getting Around line. The handful of spots we re-worked so the trip needs no tow car are called out right where they happen, and nobody loses an experience.</div>
+  </div></div>
+
+</section>
+<!-- ================= PANEL 2: HEADING WEST ================= -->
+<section id="p-west" class="panel">
+
+  <div class="sec">
+    <span class="eyebrow">Days 1 through 5 &bull; Route 66 corridor</span>
+    <h2 class="slab">Heading West</h2>
+    <p class="lead">Five legs, each one ending somewhere worth stopping. Tap Photos on any card to see the place, or Map to see exactly where it sits.</p>
+  </div>
+
+  <div class="road">
+
+    <!-- DAY 1 -->
+    <div class="day">
+      <div class="badge"><span class="n">1</span><small>DAY</small></div>
+      <div class="leg">Livingston &rarr; Grapevine &bull; ~245 mi &bull; ~4.5 hrs</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Lake scene at dusk">
+          <rect width="400" height="150" fill="#F5D9A8"/>
+          <circle cx="320" cy="42" r="26" fill="#E2A42D"/>
+          <path d="M0 95 Q100 78 200 95 T400 92 V150 H0 Z" fill="#1E7A72"/>
+          <path d="M0 112 Q120 100 240 112 T400 110 V150 H0 Z" fill="#145953"/>
+          <path d="M195 88 L195 55 L222 84 Z" fill="#FFFDF7"/>
+          <rect x="190" y="88" width="38" height="7" rx="3" fill="#2B2119"/>
+          <ellipse cx="70" cy="90" rx="34" ry="12" fill="#7A9E5F"/>
+          <rect x="66" y="62" width="8" height="28" fill="#5B4632"/>
+          <circle cx="70" cy="52" r="20" fill="#4E7A3A"/>
+        </svg>
+        <div class="card-body">
+          <span class="ribbon pick">Pick one</span>
+          <h3 class="slab">The Vineyards Campground</h3>
+          <div class="where">On Lake Grapevine &bull; Grapevine, TX</div>
+          <div class="chips"><span class="chip star">&#9733; 4.6 (623)</span><span class="chip">Lakefront sites</span><span class="chip">Beach + playground</span><span class="chip">Gated</span></div>
+          <p>Easy first day. Gated park right on the water with a sandy beach and playground the 4 and 6 year old will run straight to, and covered picnic tables at the sites. Kayak rentals if the big kids want on the lake.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>Historic Downtown Grapevine</b><span>Main Street shops, ice cream, and the vintage vibe, ten minutes away.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=historic+downtown+Grapevine+Texas+Main+Street" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>LEGOLAND Discovery Center &amp; SEA LIFE Aquarium</b><span>Both inside Grapevine Mills mall. Built for the 4, 6, and 12 year old crowd.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=LEGOLAND+Discovery+Center+Grapevine" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>Gaylord Texan atrium walk</b><span>Free to wander, wild to see, and right down the road.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Gaylord+Texan+atrium+Grapevine" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#128663; Fun stops on the drive</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Top pick</span>Woody's Smokehouse, Centerville</b><span>The self-proclaimed Jerky Capital of the World, right on I-45 about an hour in. Brisket sandwiches, kolaches, and the official snack load-up for the whole trip. &#9733; 4.5</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Woody's+Smokehouse+Centerville+TX" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Woody's+Smokehouse+Centerville+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Backup</span>Buc-ee's, Madisonville</b><span>45 minutes in. The beaver needs no introduction, and the kids will demand it anyway. Cleanest restrooms in Texas.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Buc-ee's+Madisonville+TX" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Buc-ee's+Madisonville+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Sweet stop</span>Collin Street Bakery, Corsicana</b><span>Baking since 1896, right on I-45 near the halfway mark. Sandwiches, cinnamon rolls, and the world-famous fruitcake. &#9733; 4.5</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Collin+Street+Bakery+Corsicana" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Collin+Street+Bakery+I-45+Corsicana+TX" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <details><summary>&#127860; Where we're eating</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Dinner: top pick</span>Babe's Chicken Dinner House, Roanoke</b><span>Family-style fried chicken with bottomless biscuits, mashed potatoes, and creamed corn, 15 minutes from the park. Built for a table of nine. &#9733; 4.7 (3,836)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Babe's+Chicken+Dinner+House+Roanoke" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Babe's+Chicken+Dinner+House+Roanoke+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Dinner: backup</span>Harvest Hall, Grapevine</b><span>A big food hall on Main Street with live music where all nine of us order exactly what we want. Zero negotiating with the 4 year old. &#9733; 4.7 (3,328)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Harvest+Hall+Grapevine" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Harvest+Hall+Grapevine+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Breakfast</span>Main Street Bistro &amp; Bakery</b><span>French bakery case the kids will press their faces against. Fuel up before the Amarillo leg. &#9733; 4.5 (1,734)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Main+Street+Bistro+Bakery+Grapevine" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Main+Street+Bistro+and+Bakery+Grapevine+TX" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> Uber country. Two XLs on demand cover Babe's, LEGOLAND, and downtown Grapevine with zero planning. Easiest transportation day of the trip.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=The+Vineyards+Campground+Grapevine+TX" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=The+Vineyards+Campground+Grapevine+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="orblock">OR</div>
+
+      <div class="card"><div class="card-body">
+        <h3 class="slab">Starry Night RV Resort</h3>
+        <div class="where">Fort Worth, TX</div>
+        <div class="chips"><span class="chip star">&#9733; 4.9 (206)</span><span class="chip">Pool</span><span class="chip">Fire pits + free wood</span></div>
+        <p>The highest rated park on the whole route. Newer resort with a clean pool, gated entry, and fire pits with complimentary firewood. Pick this one if the crew would rather do the Fort Worth Stockyards cattle drive than the lake.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Starry+Night+RV+Resort+Fort+Worth" target="_blank" rel="noopener">&#128247; Photos</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Starry+Night+RV+Resort+Fort+Worth+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day">
+      <div class="badge"><span class="n">2</span><small>DAY</small></div>
+      <div class="leg">Grapevine &rarr; Amarillo &bull; ~340 mi &bull; ~5.5 hrs</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Cadillacs buried nose down in a field">
+          <rect width="400" height="150" fill="#BFE0EA"/>
+          <circle cx="72" cy="40" r="22" fill="#FFFDF7" opacity=".9"/>
+          <rect y="104" width="400" height="46" fill="#C89A5B"/>
+          <g>
+            <rect x="80" y="52" width="16" height="58" rx="5" fill="#C14D28" transform="rotate(8 88 81)"/>
+            <rect x="150" y="48" width="16" height="62" rx="5" fill="#1E7A72" transform="rotate(8 158 79)"/>
+            <rect x="220" y="50" width="16" height="60" rx="5" fill="#E2A42D" transform="rotate(8 228 80)"/>
+            <rect x="290" y="46" width="16" height="64" rx="5" fill="#7B4FA0" transform="rotate(8 298 78)"/>
+          </g>
+        </svg>
+        <div class="card-body">
+          <span class="ribbon pick">Pick one</span>
+          <h3 class="slab">Big Texan RV Ranch</h3>
+          <div class="where">Amarillo, TX &bull; Route 66</div>
+          <div class="chips"><span class="chip star">&#9733; 4.5 (1,790)</span><span class="chip">Indoor pool + sauna</span><span class="chip">Free steakhouse shuttle</span></div>
+          <p>Pure roadside Americana. Indoor pool, playground, and a free limo shuttle to the Big Texan Steak Ranch, home of the free 72 ounce steak if you can finish it in an hour. Somebody in this group has to try.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>Cadillac Ranch</b><span>Ten Cadillacs buried nose down in a field. Bring spray paint cans, it is encouraged. We hit it with the coaches tomorrow morning on the way out; it sits right on the westbound frontage road with room to pull both rigs over.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Cadillac+Ranch+Amarillo+spray+paint" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>The Big Texan Steak Ranch</b><span>Dinner, the shooting gallery arcade, and the whole show.</span> <a href="https://www.bigtexan.com" target="_blank" rel="noopener">Website</a></li>
+            <li><b>Palo Duro Canyon State Park</b><span>Second largest canyon in America, 35 minutes away. The perfect warm-up act if we take a layover morning.</span> <a href="https://tpwd.texas.gov/state-parks/palo-duro-canyon" target="_blank" rel="noopener">Website</a></li>
+          </ul></div></details>
+          <details><summary>&#127860; Where we're eating</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Lunch: top pick</span>Savage Boards, Wichita Falls</b><span>Sandwich and charcuterie spot right at the halfway point, and reviewers swear the cookies alone are worth the stop. Closes mid-afternoon, which is exactly when we roll through. &#9733; 4.8</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Savage+Boards+Wichita+Falls" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Savage+Boards+Wichita+Falls+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Lunch: backup</span>Bliss House, Wichita Falls</b><span>Crepes, acai bowls, and a big breakfast-all-day menu if anybody woke up slow. &#9733; 4.6</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Bliss+House+Breakfast+Lunch+Wichita+Falls" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Bliss+House+Breakfast+and+Lunch+Wichita+Falls+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Dinner</span>The Big Texan Steak Ranch</b><span>The free limo shuttle picks us up at the RV park. Somebody at this table is attempting the free 72 ounce steak, and the rest of us are witnesses. &#9733; 4.5</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Big+Texan+Steak+Ranch+Amarillo" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Big+Texan+Steak+Ranch+Amarillo+TX" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> The Big Texan's free limo picks us up at the park for dinner, and Cadillac Ranch is a coach stop on tomorrow's departure. No car, no Uber, no problem tonight.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Big+Texan+RV+Ranch+Amarillo" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Big+Texan+RV+Ranch+Amarillo+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="orblock">OR</div>
+
+      <div class="card"><div class="card-body">
+        <h3 class="slab">Amarillo RV Resort</h3>
+        <div class="where">West Amarillo, off I-40</div>
+        <div class="chips"><span class="chip star">&#9733; 4.5 (1,680)</span><span class="chip">Huge concrete pads</span><span class="chip">Quieter</span></div>
+        <p>The polished choice. Long level concrete pull-throughs that reviewers with big rigs rave about, indoor amenities, and it sits minutes from Cadillac Ranch. Less carnival, more comfort.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Amarillo+RV+Resort+Arnot+Road" target="_blank" rel="noopener">&#128247; Photos</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Amarillo+RV+Resort+Arnot+Rd+Amarillo+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day">
+      <div class="badge"><span class="n">3</span><small>DAY</small></div>
+      <div class="leg">Amarillo &rarr; Santa Fe &bull; ~280 mi &bull; ~4.5 hrs</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Adobe buildings under a turquoise sky">
+          <rect width="400" height="150" fill="#8FCBC6"/>
+          <path d="M0 70 L70 38 L150 70 Z" fill="#B0857E" opacity=".55"/>
+          <path d="M120 74 L210 30 L310 74 Z" fill="#9C7169" opacity=".5"/>
+          <rect x="40" y="78" width="110" height="72" rx="4" fill="#C98A5B"/>
+          <rect x="150" y="92" width="90" height="58" rx="4" fill="#B4744A"/>
+          <rect x="240" y="70" width="120" height="80" rx="4" fill="#C98A5B"/>
+          <rect x="75" y="104" width="26" height="46" rx="12" fill="#1E7A72"/>
+          <rect x="272" y="100" width="22" height="20" rx="3" fill="#2B2119" opacity=".75"/>
+          <rect x="316" y="100" width="22" height="20" rx="3" fill="#2B2119" opacity=".75"/>
+          <g fill="#8A5A36"><circle cx="52" cy="84" r="2.6"/><circle cx="66" cy="84" r="2.6"/><circle cx="80" cy="84" r="2.6"/><circle cx="252" cy="76" r="2.6"/><circle cx="266" cy="76" r="2.6"/><circle cx="280" cy="76" r="2.6"/></g>
+          <g stroke="#C14D28" stroke-width="3" stroke-linecap="round"><line x1="160" y1="98" x2="160" y2="112"/><line x1="168" y1="98" x2="168" y2="112"/><line x1="176" y1="98" x2="176" y2="112"/></g>
+        </svg>
+        <div class="card-body">
+          <span class="ribbon pick">Pick one</span>
+          <h3 class="slab">Santa Fe Skies RV Park</h3>
+          <div class="where">Santa Fe, NM &bull; 7,000 ft</div>
+          <div class="chips"><span class="chip star">&#9733; 4.6 (932)</span><span class="chip">Big rig easy</span><span class="chip">Mountain views</span><span class="chip">Sculpture walk</span></div>
+          <p>Hilltop park with 360 degree views, oversized pull-throughs reviewers call genuinely big rig friendly, a gated entry, and a quirky outdoor sculpture trail that lights up at night. Fifteen minutes from the Plaza.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>Meow Wolf: House of Eternal Return</b><span>An immersive art house where you crawl through the fridge into other worlds. The one stop that hits every age from 4 to 66. Book tickets ahead.</span> <a href="https://meowwolf.com" target="_blank" rel="noopener">Website</a></li>
+            <li><b>The Santa Fe Plaza &amp; Palace of the Governors</b><span>400 year old adobe heart of the city. Native artisans sell turquoise under the portal.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Santa+Fe+Plaza+adobe" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>Green chile everything</b><span>Sopaipillas, enchiladas Christmas-style. The 66 year old picks the restaurant, that is the rule.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Santa+Fe+green+chile+enchiladas" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#128663; Fun stops on the drive</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Free and wild</span>Russell's Travel Center, Glenrio</b><span>A truck stop at the Texas line hiding a free classic car museum in the back. Easy big rig fuel, stretch the legs, gawk at the chrome.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Russell's+Travel+Center+car+museum+Glenrio" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Russell's+Travel+Center+Glenrio+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Photo stop</span>Tucumcari murals &amp; Blue Swallow Motel</b><span>The most photographed neon on all of Route 66, plus murals all over town. Ten minutes of pictures, back on the road.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Blue+Swallow+Motel+Tucumcari+neon" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Blue+Swallow+Motel+Tucumcari+NM" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <details><summary>&#127860; Where we're eating</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Lunch: top pick</span>Del's Restaurant, Tucumcari</b><span>Route 66 landmark since 1956 under the big steer sign. Chile rellenos, catfish, and a fresh sopaipilla with every meal. Closed Sundays. &#9733; 4.5 (3,427)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Del's+Restaurant+Tucumcari+Route+66" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Del's+Restaurant+Tucumcari+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Lunch: backup</span>SideKix on 66, Tucumcari</b><span>Old school diner with hand-cut fries and green chile on everything. &#9733; 4.6 (1,882)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=SideKix+on+66+Tucumcari+diner" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=SideKix+on+66+Tucumcari+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Dinner: top pick</span>Tomasita's, Santa Fe</b><span>The Santa Fe institution, ten minutes from the park. Christmas-style enchiladas and complimentary sopaipillas with honey butter that the kids will fight over. &#9733; 4.5 (8,274)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Tomasita's+Santa+Fe" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Tomasita's+Santa+Fe+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Dinner: backup</span>The Shed, Santa Fe</b><span>James Beard Award winner just off the Plaza, serving since 1953. Blue corn enchiladas worth the wait. Closed Sundays. &#9733; 4.4 (3,530)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=The+Shed+restaurant+Santa+Fe" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Shed+Santa+Fe+NM" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> Russell's and Tucumcari are coach stops right off I-40. In Santa Fe, two UberXLs run us to the Plaza in 15 minutes. Book the dinner ride with Uber Reserve since drivers are fewer here, and batch outings: in once, back once.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Santa+Fe+Skies+RV+Park" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Santa+Fe+Skies+RV+Park+Santa+Fe+NM" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="orblock">OR</div>
+
+      <div class="card"><div class="card-body">
+        <h3 class="slab">Santa Fe Rancheros Campground</h3>
+        <div class="where">Foothills east of town</div>
+        <div class="chips"><span class="chip star">&#9733; 4.7 (92)</span><span class="chip">Pi&ntilde;on forest sites</span><span class="chip">Pool + movie room</span></div>
+        <p>Tucked into the pines with sunset views over the valley, a pool, and a game room for the kids. Feels like a state park with hookups. Sites are more tucked-in, so the coaches take a touch more care backing in.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Santa+Fe+Rancheros+RV+Park+campground" target="_blank" rel="noopener">&#128247; Photos</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Santa+Fe+Rancheros+RV+Park+Santa+Fe+NM" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- DAY 4 FLEX -->
+    <div class="day">
+      <div class="badge"><span class="n">4</span><small>DAY</small></div>
+      <div class="leg">Layover in Santa Fe</div>
+      <div class="card"><div class="card-body">
+        <span class="ribbon flex">Flex night</span>
+        <h3 class="slab">A full day in Santa Fe</h3>
+        <p>Keep this night and Day 4 becomes Meow Wolf in the morning, the Plaza in the afternoon, and green chile at night with zero driving. Drop it and everything below shifts a day earlier.</p>
+        <details><summary>&#127860; Where we're eating</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Lunch</span>The Shed, on the Plaza</b><span>The move: put your name in 20 minutes before they open at 11 and walk the Plaza while you wait. Closed Sundays. &#9733; 4.4</span> <a href="https://www.google.com/search?tbm=isch&amp;q=The+Shed+Santa+Fe+blue+corn+enchiladas" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Shed+Santa+Fe+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Dinner</span>Round two at Tomasita's</b><span>Nobody has ever complained about back-to-back sopaipilla nights. Or wander the Plaza and pick whatever smells best. &#9733; 4.5</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Tomasita's+Santa+Fe+sopaipillas" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Tomasita's+Santa+Fe+NM" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+        <div class="go"><b>&#128663; Getting around:</b> One XL pair into town mid-morning, Meow Wolf then the Plaza on foot, one ride home after dinner. Two Uber runs cover the whole day.</div>
+        <div class="chips"><span class="chip">Keep = 11 or 12 day trip</span><span class="chip">Drop = 10 or 11</span></div>
+      </div></div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day">
+      <div class="badge"><span class="n">5</span><small>DAY</small></div>
+      <div class="leg">Santa Fe &rarr; Williams, AZ &bull; ~415 mi &bull; ~6 hrs</div>
+      <div class="card"><div class="card-body">
+        <span class="ribbon top">Longest day west</span>
+        <h3 class="slab">The push day, with two great excuses to stop</h3>
+        <p>The one long haul on the way out, and it is a straight, easy interstate run. Break it up right in the middle:</p>
+        <ul class="todo">
+          <li><b>Petrified Forest National Park</b><span>I-40 runs straight through it. The park road handles big rigs fine, so the coaches can drive the Painted Desert overlooks without unhooking a thing.</span> <a href="https://www.nps.gov/pefo" target="_blank" rel="noopener">Website</a> &bull; <a href="https://www.google.com/search?tbm=isch&amp;q=Petrified+Forest+Painted+Desert+overlook" target="_blank" rel="noopener">Photos</a></li>
+          <li><b>Standin' on the Corner in Winslow, Arizona</b><span>Yes, that corner. Two minutes off the highway, one family photo, back on the road.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Standin+on+the+Corner+Winslow+Arizona" target="_blank" rel="noopener">Photos</a></li>
+          <li><b><span class="rank">Lunch: top pick</span>Laguna Burger, New Laguna</b><span>The legendary green chile cheeseburger of Route 66, inside a travel center 45 minutes past Albuquerque, so the coaches fuel and park easy while the burgers come off the grill. &#9733; 4.3 (912)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Laguna+Burger+green+chile+cheeseburger+Route+66" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Laguna+Burger+New+Laguna+NM" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Optional detour</span>Meteor Crater</b><span>A 550 foot deep hole punched by a meteor 50,000 years ago, ten minutes off I-40 near Winslow with RV parking up front. The 12 year old science brain will thank us.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Meteor+Crater+Winslow+Arizona" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Meteor+Crater+Natural+Landmark+Winslow+AZ" target="_blank" rel="noopener">Map</a></li>
+        </ul>
+        <div class="go"><b>&#128663; Getting around:</b> Every stop today is a coach stop right off I-40, including lunch. Fuel, park, eat, roll.</div>
+        <div class="note">Tonight we land at the canyon basecamp. That decision gets its own tab: tap <b>The Canyon</b> up top.</div>
+      </div></div>
+    </div>
+
+  </div><!-- /road -->
+</section>
+<!-- ================= PANEL 3: THE CANYON ================= -->
+<section id="p-canyon" class="panel">
+
+  <div class="sec">
+    <span class="eyebrow">Days 5 through 8 &bull; The main event</span>
+    <h2 class="slab">The Canyon</h2>
+    <p class="lead">Two full days at the South Rim, and one big decision: where do we park the coaches? Two great answers.</p>
+  </div>
+
+  <div class="card">
+    <svg viewBox="0 0 400 170" role="img" aria-label="Grand Canyon layered rock at sunrise">
+      <rect width="400" height="170" fill="#FBD9A0"/>
+      <circle cx="200" cy="66" r="30" fill="#E2A42D"/>
+      <path d="M0 74 L60 52 L120 76 L190 50 L260 78 L330 54 L400 74 V170 H0 Z" fill="#D98F5A"/>
+      <path d="M0 100 L70 82 L150 104 L230 84 L310 106 L400 90 V170 H0 Z" fill="#C1653C"/>
+      <path d="M0 126 L90 110 L180 130 L280 112 L400 128 V170 H0 Z" fill="#9A3A1C"/>
+      <path d="M0 150 L110 138 L220 152 L330 140 L400 150 V170 H0 Z" fill="#6E2A16"/>
+    </svg>
+    <div class="card-body">
+      <h3 class="slab">Grand Canyon National Park, South Rim</h3>
+      <div class="where">Open year round &bull; 7,000 ft</div>
+      <p>A mile deep, ten miles across, and no picture does it. The South Rim has the shuttles, the lodges, the flat rim walks, and the sunset points, which makes it the right rim for a crew running ages 4 to 66.</p>
+      <div class="actions">
+        <a class="btn rust" href="https://www.nps.gov/grca" target="_blank" rel="noopener">&#127963;&#65039; Official park site</a>
+        <a class="btn ghost" href="https://www.google.com/search?tbm=isch&amp;q=Grand+Canyon+South+Rim+Mather+Point" target="_blank" rel="noopener">&#128247; Photos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <span class="eyebrow">Basecamp decision</span>
+    <h2 class="slab">Where the coaches sleep</h2>
+  </div>
+
+  <div class="card">
+    <svg viewBox="0 0 400 150" role="img" aria-label="Steam train through the pines">
+      <rect width="400" height="150" fill="#CFE3DC"/>
+      <g fill="#2F5E4E"><path d="M40 96 L58 52 L76 96 Z"/><path d="M90 96 L108 46 L126 96 Z"/><path d="M320 96 L338 50 L356 96 Z"/><path d="M366 96 L382 58 L398 96 Z"/></g>
+      <rect y="108" width="400" height="8" fill="#5B4632"/>
+      <g><rect x="120" y="70" width="70" height="38" rx="4" fill="#2B2119"/><rect x="180" y="58" width="26" height="50" rx="3" fill="#2B2119"/><rect x="140" y="56" width="12" height="16" fill="#2B2119"/><circle cx="136" cy="112" r="9" fill="#4A3E31"/><circle cx="166" cy="112" r="9" fill="#4A3E31"/><circle cx="196" cy="112" r="9" fill="#4A3E31"/></g>
+      <g><rect x="214" y="74" width="80" height="34" rx="4" fill="#C14D28"/><rect x="222" y="82" width="14" height="10" rx="2" fill="#FBF3DF"/><rect x="244" y="82" width="14" height="10" rx="2" fill="#FBF3DF"/><rect x="266" y="82" width="14" height="10" rx="2" fill="#FBF3DF"/><circle cx="232" cy="112" r="8" fill="#4A3E31"/><circle cx="276" cy="112" r="8" fill="#4A3E31"/></g>
+      <circle cx="128" cy="42" r="9" fill="#FFFDF7" opacity=".9"/><circle cx="112" cy="32" r="7" fill="#FFFDF7" opacity=".8"/><circle cx="98" cy="25" r="5" fill="#FFFDF7" opacity=".7"/>
+    </svg>
+    <div class="card-body">
+      <span class="ribbon top">The kid favorite</span>
+      <h3 class="slab">Option A: Williams + the Grand Canyon Railway</h3>
+      <div class="where">Grand Canyon Railway RV Park &bull; Williams, AZ</div>
+      <div class="chips"><span class="chip star">&#9733; 4.6 (1,230)</span><span class="chip">Walk to the train depot</span><span class="chip">Indoor pool access</span><span class="chip">Pet hotel on site</span></div>
+      <p>Park the rigs and never think about canyon parking again. A historic train runs from the depot two blocks away straight to the rim: wild west shootout show before boarding, singing cowboys on board, and outlaws on horseback "rob" the train on the ride home. The 4, 6, and 12 year old will talk about it for years, and the 66 year old rides in comfort. Williams itself is a Route 66 postcard town with diners and shops.</p>
+      <details><summary>&#128203; Big rig notes</summary><div class="inner"><p>Long level pull-throughs, easy in and out off I-40. Sits next to the BNSF line, so expect an occasional train horn. Hotel pool access is included but has been under renovation recently, so confirm it is open when booking.</p></div></details>
+      <details><summary>&#127860; Where we're eating in Williams</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Top pick</span>Rustic 66 Sushi &amp; Grill</b><span>The town sleeper: highest rated kitchen in Williams, and not just sushi. Big burgers, homemade mac and cheese the kids rave about, and a nice patio. &#9733; 4.8</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Rustic+66+Sushi+Grill+Williams+AZ" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Rustic+66+Sushi+and+Grill+Williams+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">The classic</span>Rod's Steak House</b><span>Feeding Route 66 travelers since 1946, cow-shaped menus and all. Go for the history as much as the ribeye. &#9733; 4.0 (1,499)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Rod's+Steak+House+Williams+AZ" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Rod's+Steak+House+Williams+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">The fun one</span>Cruiser's Route 66 Cafe</b><span>Feels like eating inside the movie Cars. Neon, memorabilia, live music out front. The 4 and 6 year old will lose their minds. &#9733; 4.0 (5,047)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Cruiser's+Route+66+Cafe+Williams" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Cruiser's+Route+66+Cafe+Williams+AZ" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+      <div class="go"><b>&#128663; Getting around:</b> Park the rigs once and they do not move for three days. Walk two blocks to the depot, train to the rim, free park shuttles to every overlook, train home. Downtown Williams is a five minute walk.</div>
+      <div class="actions">
+        <a class="btn rust" href="https://www.thetrain.com" target="_blank" rel="noopener">&#128646; The train</a>
+        <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Grand+Canyon+Railway+RV+Park+Williams" target="_blank" rel="noopener">&#128247; Photos</a>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Grand+Canyon+Railway+RV+Park+Williams+AZ" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="orblock">OR</div>
+
+  <div class="card">
+    <svg viewBox="0 0 400 150" role="img" aria-label="Elk at the canyon rim at dusk">
+      <rect width="400" height="150" fill="#F2B694"/>
+      <circle cx="86" cy="46" r="22" fill="#FBF3DF"/>
+      <path d="M0 92 L80 70 L170 96 L260 72 L340 96 L400 84 V150 H0 Z" fill="#B04A26"/>
+      <path d="M0 122 L110 106 L230 126 L340 110 L400 122 V150 H0 Z" fill="#7E2F16"/>
+      <g fill="#3A2A1E" transform="translate(268,58)">
+        <rect x="14" y="22" width="34" height="18" rx="7"/>
+        <rect x="42" y="8" width="9" height="22" rx="4"/>
+        <circle cx="49" cy="8" r="6"/>
+        <rect x="17" y="38" width="5" height="18"/><rect x="27" y="38" width="5" height="18"/><rect x="37" y="38" width="5" height="18"/><rect x="44" y="38" width="5" height="18"/>
+        <path d="M50 2 L44 -10 M50 2 L52 -12 M50 2 L58 -8" stroke="#3A2A1E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <div class="card-body">
+      <span class="ribbon pick">Sleep inside the park</span>
+      <h3 class="slab">Option B: Trailer Village RV Park</h3>
+      <div class="where">Inside Grand Canyon National Park &bull; Grand Canyon Village</div>
+      <div class="chips"><span class="chip star">&#9733; 4.2 (1,247)</span><span class="chip">Only full hookups in the park</span><span class="chip">Free shuttle at the door</span><span class="chip">Elk in camp</span></div>
+      <p>The only full hookup park inside the gates, ten minutes from the rim with the free park shuttle stopping right outside. Elk wander between the coaches at dawn, and you can catch sunrise at Mather Point before the day crowds even clear the entrance gate. Pull-throughs run to 50 feet.</p>
+      <details><summary>&#128203; Big rig notes</summary><div class="inner"><p>Book this one first, months ahead, especially for fall. Sites are staggered and long but bring leveling blocks. In-park roads to the village are big rig fine; once parked, leave the coaches put and ride shuttles everywhere.</p></div></details>
+      <div class="go"><b>&#128663; Getting around:</b> The free park shuttle stops at the doorstep and covers the village, the rim, and the Hermit Road overlooks. Groceries are a short walk at the village market.</div>
+      <div class="actions">
+        <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Trailer+Village+RV+Park+Grand+Canyon" target="_blank" rel="noopener">&#128247; Photos</a>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Trailer+Village+RV+Park+Grand+Canyon+Village+AZ" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <span class="eyebrow">Days 6 and 7</span>
+    <h2 class="slab">Two full canyon days</h2>
+  </div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Day one: the rim, done right</h3>
+    <ul class="todo">
+      <li><b>Sunrise or sunset at Mather Point or Hopi Point</b><span>The two classic looks. Sunset at Hopi Point via the red shuttle line is the one everybody remembers.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Hopi+Point+sunset+Grand+Canyon" target="_blank" rel="noopener">Photos</a></li>
+      <li><b>Walk the Rim Trail</b><span>Paved and flat between the village and Mather Point. Perfect for every age on this trip, walk as much or as little as you want and shuttle back.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Rim+Trail+Grand+Canyon+paved" target="_blank" rel="noopener">Photos</a></li>
+      <li><b>Junior Ranger badges</b><span>Free program at the visitor center. The 4, 6, and 12 year old get sworn in by a real ranger.</span> <a href="https://www.nps.gov/grca/learn/kidsyouth/beajuniorranger.htm" target="_blank" rel="noopener">Details</a></li>
+      <li><b><span class="rank">Easy meals</span>Maswik Food Court &amp; Bright Angel Tavern</b><span>The two no-stress feeds inside the park with four kids: everyone grabs their own plate at Maswik, and the Bright Angel Tavern does a solid sit-down lunch right off the Rim Trail.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Maswik+Lodge+food+court+Grand+Canyon" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Maswik+Lodge+Grand+Canyon+Village+AZ" target="_blank" rel="noopener">Map</a></li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Day two: the long view</h3>
+    <ul class="todo">
+      <li><b>Desert View Drive &amp; the Watchtower</b><span>25 miles of overlooks ending at the 1932 stone tower. No free shuttle runs out here, so book the guided Desert View bus tour through the village lodges when you reserve the canyon nights, or trade it for a Hermit Road shuttle sunset and lose nothing.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Desert+View+Watchtower+Grand+Canyon" target="_blank" rel="noopener">Photos</a></li>
+      <li><b>Grand Canyon IMAX in Tusayan</b><span>34 minutes that explain the whole canyon. Ride the seasonal Tusayan shuttle if it's running; if not, skip it guilt-free, the real thing is outside.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Grand+Canyon+IMAX+Tusayan" target="_blank" rel="noopener">Photos</a></li>
+      <li><b>Lunch at El Tovar</b><span>The grand 1905 lodge dining room right on the rim. Worth one dressed-up-ish family meal.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=El+Tovar+dining+room+Grand+Canyon" target="_blank" rel="noopener">Photos</a></li>
+      <li><b>A few steps down Bright Angel Trail</b><span>For the 18 year old and any adults who want to say they went below the rim. Down is optional, back up is not, so keep it short.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Bright+Angel+Trail+upper+switchbacks" target="_blank" rel="noopener">Photos</a></li>
+    </ul>
+  </div></div>
+
+</section>
+<!-- ================= PANEL 4: ROLLING HOME ================= -->
+<section id="p-home" class="panel">
+
+  <div class="sec">
+    <span class="eyebrow">Days 8 through 11 &bull; The desert south</span>
+    <h2 class="slab">Rolling Home</h2>
+    <p class="lead">The Grand Loop's return leg: red rocks, white sand, and a Hill Country landing. All new road, no repeats.</p>
+  </div>
+
+  <div class="road">
+
+    <!-- DAY 8 -->
+    <div class="day">
+      <div class="badge"><span class="n">8</span><small>DAY</small></div>
+      <div class="leg">Canyon &rarr; Sedona &bull; ~95 mi &bull; ~2 hrs (I-40 to I-17 to SR-179, never 89A)</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Sedona red rock spires">
+          <rect width="400" height="150" fill="#BFE0EA"/>
+          <circle cx="330" cy="38" r="20" fill="#FFFDF7" opacity=".9"/>
+          <path d="M60 118 L74 40 L92 46 L104 118 Z" fill="#C1502E"/>
+          <path d="M150 118 L162 30 L186 30 L198 118 Z" fill="#A94425"/>
+          <path d="M250 118 L262 54 L292 48 L308 118 Z" fill="#C1502E"/>
+          <rect x="150" y="52" width="48" height="7" fill="#8F3A1F"/>
+          <rect x="253" y="72" width="54" height="6" fill="#8F3A1F"/>
+          <path d="M0 118 H400 V150 H0 Z" fill="#7A9E5F"/>
+          <g fill="#2F5E4E"><path d="M28 118 L36 96 L44 118 Z"/><path d="M356 118 L364 94 L372 118 Z"/></g>
+        </svg>
+        <div class="card-body">
+          <h3 class="slab">Rancho Sedona RV Park</h3>
+          <div class="where">In Sedona itself &bull; creekside under the sycamores</div>
+          <div class="chips"><span class="chip star">&#9733; 4.5 (952)</span><span class="chip">10 min walk to downtown</span><span class="chip">Creek at the sites</span><span class="chip">Next to Tlaquepaque</span></div>
+          <p>The move that makes Sedona work with no car: sleep in Sedona. This creekside park sits a ten minute walk from downtown and right beside the Tlaquepaque arts village, with red rock views over the trees. Call when booking and ask for their longest pull-through sites; the park is shaded and tree-lined, so the 45s want the big spots.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>Tlaquepaque Arts &amp; Shopping Village</b><span>Sycamore-shaded courtyards, fountains, galleries, and sweets, literally next door to the park.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Tlaquepaque+Sedona" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>Cathedral Rock via the free trailhead shuttle</b><span>Sedona runs free buses to the Cathedral Rock trailhead Thursday through Sunday. Ride out, climb as far as the crew wants, ride back.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Cathedral+Rock+Sedona+sunset" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>Uptown &amp; Chapel of the Holy Cross</b><span>The $2 Sedona Shuttle Connect runs on demand all over town, Uptown to the Chapel included. All nine of us across town for pocket change.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Chapel+of+the+Holy+Cross+Sedona" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#127860; Where we're eating</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Dinner: top pick</span>The Hudson, Sedona</b><span>Famous chicken pot pie the size of a hubcap and a patio staring straight at the red rocks. Book a table for nine ahead. &#9733; 4.6 (4,905)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=The+Hudson+Sedona+patio+view" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Hudson+Sedona+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Kid-easy with a view</span>Canyon Breeze, Uptown Sedona</b><span>Counter-service burgers, nachos, and ice cream with a front-row red rock deck. Zero patience required. &#9733; 4.3 (3,604)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Canyon+Breeze+Sedona+view" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Canyon+Breeze+Restaurant+Sedona+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Brunch</span>Pump House Station</b><span>Locals' favorite for breakfast burritos and benedicts before a Sedona morning. &#9733; 4.6 (2,093)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Pump+House+Station+Sedona" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Pump+House+Station+Urban+Eatery+Sedona+AZ" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="note"><b>Coach route:</b> come down I-40 to I-17, then up SR-179 into town. Never take 89A through Oak Creek Canyon in the coaches; the switchbacks have no room for 45 feet.</div>
+          <div class="go"><b>&#128663; Getting around:</b> This was the one day a tow car truly mattered, so we moved the hotel instead. Based in town, everything is a walk, a free trailhead bus, or a $2 on-demand shuttle. Full Sedona, zero cars.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Rancho+Sedona+RV+Park" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Rancho+Sedona+RV+Park+Sedona+AZ" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="orblock">OR</div>
+
+      <div class="card"><div class="card-body">
+        <h3 class="slab">Verde Ranch RV Resort</h3>
+        <div class="where">Camp Verde, AZ &bull; 30 min from Sedona</div>
+        <div class="chips"><span class="chip star">&#9733; 4.6 (1,082)</span><span class="chip">Heated pool + 2 hot tubs</span><span class="chip warn">Needs a car for Sedona</span></div>
+        <p>The bigger resort with the pool and hot tubs, and a great stay on its own. But straight talk: with no car, Sedona is out of reach from here, and rideshare in Camp Verde is thin to nonexistent. Pick this one only if a pool evening beats a Sedona evening.</p>
+        <div class="actions">
+          <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Verde+Ranch+RV+Resort+Camp+Verde" target="_blank" rel="noopener">&#128247; Photos</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Verde+Ranch+RV+Resort+Camp+Verde+AZ" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- DAY 9 FLEX TUCSON -->
+    <div class="day">
+      <div class="badge"><span class="n">9</span><small>DAY</small></div>
+      <div class="leg">Sedona &rarr; Tucson &bull; ~230 mi &bull; ~3.5 hrs</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Saguaro cactus at sunset">
+          <rect width="400" height="150" fill="#F6B26B"/>
+          <circle cx="200" cy="118" r="52" fill="#E2703A" opacity=".55"/>
+          <circle cx="200" cy="118" r="30" fill="#E2A42D"/>
+          <path d="M0 118 H400 V150 H0 Z" fill="#8A5A36"/>
+          <g fill="#2F5E4E">
+            <rect x="86" y="46" width="16" height="74" rx="8"/>
+            <rect x="66" y="62" width="12" height="30" rx="6"/><rect x="66" y="62" width="26" height="12" rx="6"/>
+            <rect x="108" y="52" width="12" height="26" rx="6"/><rect x="96" y="52" width="24" height="12" rx="6"/>
+            <rect x="296" y="58" width="14" height="62" rx="7"/>
+            <rect x="314" y="70" width="11" height="24" rx="5"/><rect x="302" y="70" width="23" height="11" rx="5"/>
+          </g>
+        </svg>
+        <div class="card-body">
+          <span class="ribbon flex">Flex night</span>
+          <h3 class="slab">Voyager RV Resort &amp; Hotel</h3>
+          <div class="where">Tucson, AZ</div>
+          <div class="chips"><span class="chip star">&#9733; 4.3 (805)</span><span class="chip">Pools + restaurant on site</span><span class="chip">42 ft rigs confirmed</span></div>
+          <p>Keeping this night splits the drive home perfectly and buys a Tucson evening: pools, Fat Willy's restaurant steps from the coach, and saguaro country all around. Drop it and Day 9 becomes one 7 hour push straight to Las Cruces. Your call, but this is the flex night we would keep.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>Saguaro country, the no-car way</b><span>The park's loop drives need a car, so see the giant cactus forest at the Desert Museum instead; it sits in the same saguaro-covered hills and you lose nothing.</span> <a href="https://www.nps.gov/sagu" target="_blank" rel="noopener">Website</a></li>
+            <li><b>Arizona-Sonora Desert Museum</b><span>Part zoo, part garden, all outdoors, and consistently rated one of the best attractions in the country. It's a 35 minute Uber across town, so schedule the return pickup with Uber Reserve before you walk in.</span> <a href="https://www.desertmuseum.org" target="_blank" rel="noopener">Website</a></li>
+            <li><b>Pima Air &amp; Space Museum</b><span>400 aircraft including presidential jets and an SR-71. The 12 and 18 year old will not want to leave.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Pima+Air+and+Space+Museum" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#127860; Eats and stops on this leg</summary><div class="inner"><ul class="todo"><li><b><span class="rank">The pie stop</span>Rock Springs Caf&eacute;, Black Canyon City</b><span>Roadhouse on I-17 that has been slinging pie since 1918. Lunch, then whole pies to go for the coach fridges. &#9733; 4.3 (8,930)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Rock+Springs+Cafe+pie+Arizona" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Rock+Springs+Cafe+Black+Canyon+City+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Dinner: top pick</span>El Charro Caf&eacute; Downtown, Tucson</b><span>The oldest restaurant in Tucson, same family since 1922, and the claimed birthplace of the chimichanga. Order the carne seca. &#9733; 4.3 (7,188)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=El+Charro+Cafe+Tucson+carne+seca" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=El+Charro+Cafe+Downtown+Tucson+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Zero-effort option</span>Fat Willy's at the resort</b><span>Steps from the coach if nobody wants to get back in a car. Pool, dinner, done.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Fat+Willy's+Voyager+RV+Resort+Tucson" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Voyager+RV+Resort+Tucson+AZ" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> Rock Springs pie is a coach stop right on I-17. Tucson is a real Uber city: Pima is an easy 15 minute ride, the Desert Museum works with a scheduled return, and Fat Willy's is steps from the coach when nobody wants shoes.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Voyager+RV+Resort+Tucson" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Voyager+RV+Resort+Tucson+AZ" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 10 LAS CRUCES -->
+    <div class="day">
+      <div class="badge"><span class="n">10</span><small>DAY</small></div>
+      <div class="leg">Tucson &rarr; Las Cruces &bull; ~275 mi &bull; ~4 hrs</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="White sand dunes below purple mountains">
+          <rect width="400" height="150" fill="#BFD8EA"/>
+          <path d="M0 78 L60 44 L120 78 L180 40 L240 78 L300 48 L360 78 L400 60 V90 H0 Z" fill="#6B5B95"/>
+          <path d="M0 88 Q100 66 200 88 T400 84 V150 H0 Z" fill="#FFFDF7"/>
+          <path d="M0 116 Q120 98 240 116 T400 112 V150 H0 Z" fill="#EFE9DA"/>
+          <g transform="translate(196,84) rotate(14)"><rect width="26" height="9" rx="4" fill="#C14D28"/><circle cx="34" cy="-2" r="5" fill="#2B2119"/><rect x="26" y="-2" width="10" height="4" rx="2" fill="#2B2119" transform="rotate(-30 26 -2)"/></g>
+        </svg>
+        <div class="card-body">
+          <h3 class="slab">Hacienda RV Resort</h3>
+          <div class="where">Las Cruces, NM &bull; Organ Mountain views</div>
+          <div class="chips"><span class="chip star">&#9733; 4.5 (939)</span><span class="chip">Adults-only hot tub</span><span class="chip">Legendary showers</span><span class="chip">Grassy dog runs</span></div>
+          <p>A polished, immaculate park with the Organ Mountains out the windshield, an adults-only hot tub for the grown-ups, and showers that reviewers write home about. Roll in by mid-afternoon and head straight for the dunes.</p>
+          <details><summary>&#128205; While you're here</summary><div class="inner"><ul class="todo">
+            <li><b>White Sands National Park</b><span>The world's largest gypsum dunefield, 50 minutes up US-70, and we take the coaches themselves onto Dunes Drive tomorrow morning; the park keeps oversized parking right at the dunes. Buy sleds at the visitor center and let all four kids (and the adults) surf the gypsum. Still the sleeper highlight of the whole trip.</span> <a href="https://www.nps.gov/whsa" target="_blank" rel="noopener">Website</a> &bull; <a href="https://www.google.com/search?tbm=isch&amp;q=White+Sands+sledding+sunset" target="_blank" rel="noopener">Photos</a></li>
+            <li><b>Old Mesilla Plaza</b><span>Adobe village where Billy the Kid stood trial. Great dinner spot on the square.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Old+Mesilla+Plaza+Las+Cruces" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#127860; Eats and stops on this leg</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Roadside legend</span>The Thing?, Dragoon AZ</b><span>You will pass 100 yellow billboards asking WHAT IS IT. For a few bucks at a big easy-parking travel stop, the kids finally find out. Pure I-10 tradition.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=The+Thing+museum+Dragoon+Arizona" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Thing+Dragoon+AZ" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Dinner: top pick</span>La Posta de Mesilla</b><span>An 1840s adobe compound on the old plaza with parrots in the lobby and legendary tostadas. Dinner here, then walk the square where Billy the Kid stood trial. &#9733; 4.4 (7,428)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=La+Posta+de+Mesilla+interior" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Posta+de+Mesilla+NM" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> The Thing? is a coach stop on I-10. In Las Cruces, Old Mesilla is a ten minute Uber from the park for dinner at La Posta. White Sands got re-planned to a coach morning: see tomorrow.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Hacienda+RV+Resort+Las+Cruces" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Hacienda+RV+Resort+Las+Cruces+NM" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 11 FORT STOCKTON -->
+    <div class="day">
+      <div class="badge"><span class="n">11</span><small>DAY</small></div>
+      <div class="leg">Las Cruces &rarr; White Sands &rarr; Fort Stockton &bull; ~390 mi &bull; sled first, then roll east</div>
+      <div class="card"><div class="card-body">
+        <h3 class="slab">Hilltop RV Park</h3>
+        <div class="where">Fort Stockton, TX &bull; right off I-10</div>
+        <div class="chips"><span class="chip star">&#9733; 4.6 (681)</span><span class="chip">Pool + walking trail</span><span class="chip">Wide pull-throughs</span></div>
+        <p>Morning at the dunes first: coaches up US-70, oversized parking on Dunes Drive, two hours of sledding while the sand is cool, then back through Las Cruces and east into West Texas. Twelve-year full-timers call Hilltop one of the cleanest parks they have seen: flags from every state, metal art everywhere, fire pits, and a pool to burn off the last of the kids' energy.</p>
+        <details><summary>&#127860; Eats and stops in town</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Mandatory photo</span>Paisano Pete</b><span>The world-famous giant roadrunner statue, right in Fort Stockton. Eleven feet of family photo op; roll the coaches past it on the way in.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Paisano+Pete+roadrunner+Fort+Stockton" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Paisano+Pete+Fort+Stockton+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Dinner</span>K-Bob's Steakhouse</b><span>The town standby: steaks, a salad wagon, and soft rolls people write reviews about. Swing the coaches in on the way to the park; the lot swallows both rigs, and Uber in Fort Stockton is not something to count on. &#9733; 4.0 (3,781)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=K-Bob's+Steakhouse+Fort+Stockton" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=K-BOB'S+Steakhouse+Fort+Stockton+TX" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+        <div class="go"><b>&#128663; Getting around:</b> All coaches, all day: dunes in the morning, Paisano Pete drive-by, dinner stop at K-Bob's before parking for the night. Plan zero on rideshare in this town.</div>
+        <div class="actions">
+          <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Hilltop+RV+Park+Fort+Stockton" target="_blank" rel="noopener">&#128247; Photos</a>
+          <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Hilltop+RV+Park+Fort+Stockton+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- DAY 12 HOME -->
+    <div class="day">
+      <div class="badge"><span class="n">12</span><small>DAY</small></div>
+      <div class="leg">Fort Stockton &rarr; Livingston &bull; ~480 mi &bull; the barn door day</div>
+
+      <div class="card">
+        <svg viewBox="0 0 400 150" role="img" aria-label="Hill Country oaks and a German storefront">
+          <rect width="400" height="150" fill="#CFE6C3"/>
+          <path d="M0 96 Q100 70 200 96 T400 92 V150 H0 Z" fill="#7A9E5F"/>
+          <g><rect x="250" y="58" width="96" height="58" fill="#FFFDF7" stroke="#2B2119" stroke-width="3"/><path d="M244 58 L298 30 L352 58 Z" fill="#C14D28" stroke="#2B2119" stroke-width="3"/><rect x="264" y="82" width="18" height="34" fill="#1E7A72"/><rect x="298" y="82" width="26" height="20" fill="#BFE0EA" stroke="#2B2119" stroke-width="2"/></g>
+          <rect x="92" y="70" width="10" height="40" fill="#5B4632"/>
+          <circle cx="97" cy="56" r="26" fill="#4E7A3A"/>
+          <circle cx="76" cy="68" r="14" fill="#4E7A3A"/>
+          <circle cx="120" cy="66" r="15" fill="#4E7A3A"/>
+          <circle cx="106" cy="46" r="6" fill="#E86A33"/>
+        </svg>
+        <div class="card-body">
+          <span class="ribbon top">Longest day, worth it</span>
+          <h3 class="slab">Lunch (or one last night) in Fredericksburg</h3>
+          <div class="where">Texas Hill Country</div>
+          <p>It is a big final day, so break it in the prettiest place possible. Three hours in from Fort Stockton, park the coaches, walk Main Street, eat German food, load up on peach everything, then run the last 4.5 hours home to Livingston.</p>
+          <details><summary>&#128205; The 12+ day version</summary><div class="inner"><ul class="todo">
+            <li><b>Lantern Oaks RV Resort</b><span>&#9733; 4.8 (634). Pool, hot tub, pickleball, putting green, live music, private dog yards on some sites. If we want to land soft instead of pushing home, this is the spot, and it turns the last day into an easy 4.5 hour cruise.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Lantern+Oaks+RV+Resort+Fredericksburg" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Lantern+Oaks+RV+Resort+Fredericksburg+TX" target="_blank" rel="noopener">Map</a></li>
+            <li><b>Enchanted Rock</b><span>The giant pink granite dome 30 minutes north. Sunrise climb for whoever is up for it.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Enchanted+Rock+Fredericksburg" target="_blank" rel="noopener">Photos</a></li>
+          </ul></div></details>
+          <details><summary>&#127860; Eats and stops on the last leg</summary><div class="inner"><ul class="todo"><li><b><span class="rank">Worth the detour</span>Caverns of Sonora</b><span>One of the most beautiful show caves on earth, 8 miles off I-10 at Sonora. Tours run about two hours, so this one fits the 12-day pace best.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Caverns+of+Sonora+crystal+formations" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Caverns+of+Sonora+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank">Lunch: top pick</span>Old German Bakery &amp; Restaurant</b><span>Schnitzel, a giant pretzel with beer cheese, and a bakery case up front for road cookies. Heads-up: closed Wednesday and Thursday. &#9733; 4.5 (4,329)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Old+German+Bakery+Fredericksburg" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Old+German+Bakery+and+Restaurant+Fredericksburg+TX" target="_blank" rel="noopener">Map</a></li><li><b><span class="rank alt">Lunch: backup</span>The Auslander</b><span>Biergarten on Main Street with a menu broad enough for every kid at the table. Closed Wednesday. &#9733; 4.3 (5,110)</span> <a href="https://www.google.com/search?tbm=isch&amp;q=The+Auslander+Fredericksburg+biergarten" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=The+Auslander+Fredericksburg+TX" target="_blank" rel="noopener">Map</a></li></ul></div></details>
+          <div class="go"><b>&#128663; Getting around:</b> The caverns take the coaches (tour buses park there daily). In Fredericksburg, put both rigs in the oversized lot by the visitor center a block off Main and walk everything. If we overnight at Lantern Oaks, Uber runs in town for the evening.</div>
+          <div class="actions">
+            <a class="btn solid" href="https://www.google.com/search?tbm=isch&amp;q=Fredericksburg+Texas+Main+Street" target="_blank" rel="noopener">&#128247; Photos</a>
+            <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Main+Street+Fredericksburg+TX" target="_blank" rel="noopener">&#128506;&#65039; Map</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /road -->
+
+  <div class="sec">
+    <span class="eyebrow">Option 2 return</span>
+    <h2 class="slab">If we run Route 66 both ways</h2>
+  </div>
+  <div class="card"><div class="card-body">
+    <p>Coming home on I-40 instead? Swap in these two so nothing repeats:</p>
+    <ul class="todo">
+      <li><b>Route 66 RV Resort, Albuquerque</b><span>&#9733; 4.6 (992). Resort-grade park next to the casino: long concrete pull-throughs, pool, putting green, pet wash, shuttle to the restaurants. Old Town Albuquerque and the Sandia Peak Tramway are the day's outing.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Route+66+RV+Resort+Albuquerque" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://www.google.com/maps/search/?api=1&amp;query=Route+66+RV+Resort+Albuquerque+NM" target="_blank" rel="noopener">Map</a></li>
+      <li><b>Palo Duro Canyon layover, Amarillo</b><span>Base at Big Texan RV Ranch or Amarillo RV Resort and spend a day driving into the "Grand Canyon of Texas." Bookending the trip with two canyons is a pretty good story.</span> <a href="https://www.google.com/search?tbm=isch&amp;q=Palo+Duro+Canyon+Lighthouse+trail" target="_blank" rel="noopener">Photos</a> &bull; <a href="https://tpwd.texas.gov/state-parks/palo-duro-canyon" target="_blank" rel="noopener">Website</a></li>
+    </ul>
+  </div></div>
+
+</section>
+
+<section id="p-money" class="panel">
+  <div class="sec">
+    <span class="eyebrow">The money, all in</span>
+    <h2 class="slab">What it runs</h2>
+    <p class="lead">Now priced off the real quote: two identical 2023 Thor Venetian diesel pushers out of Spring, October 1 to 11, with 2,000 miles and 40 generator hours included on each. Spending money and breathing room still baked in.</p>
+  </div>
+
+  <div class="card"><div class="card-body">
+    <div class="bline"><span class="lbl">Two RV rentals<small>$715.50 &times; 10 nights, both coaches</small></span><span class="amt">$14,310</span></div>
+    <div class="bline"><span class="lbl">Mileage overage<small>2,000 miles included per rig; ~750 over at $0.75 each, White Sands and Sedona detours in</small></span><span class="amt">$1,125</span></div>
+    <div class="bline"><span class="lbl">Coverages &amp; platform fees<small>protection package, prep fee, and service fee, both rigs, straight off the quote</small></span><span class="amt">$3,760</span></div>
+    <div class="bline"><span class="lbl">Rental taxes<small>Texas short-term rental tax runs about 10%; Outdoorsy shows the exact figure at checkout</small></span><span class="amt">~$1,900</span></div>
+    <div class="bline"><span class="lbl">Fuel<small>~700 gal diesel across both coaches</small></span><span class="amt">$3,000</span></div>
+    <div class="bline"><span class="lbl">Campgrounds<small>10 nights &times; 2 sites &times; ~$90 avg at the nicer resorts</small></span><span class="amt">$1,800</span></div>
+    <div class="bline"><span class="lbl">Food &amp; dining<small>9 people, restaurant-forward like the plan, plus rig groceries, coffee and treats</small></span><span class="amt">$5,000</span></div>
+    <div class="bline"><span class="lbl">Attractions &amp; activities<small>canyon train, Meow Wolf, park fees, museums, White Sands, caverns, safari park</small></span><span class="amt">$2,000</span></div>
+    <div class="bline"><span class="lbl">Getting around<small>UberXLs in the cities, the canyon bus tour, Sedona shuttles, tips</small></span><span class="amt">$1,200</span></div>
+    <div class="bline"><span class="lbl">Souvenirs &amp; spending money<small>walking-around cash for nine, the kids especially</small></span><span class="amt">$1,000</span></div>
+    <div class="bline"><span class="lbl">Propane, dump, laundry, tolls &amp; buffer<small>the odds and ends, with real cushion built in</small></span><span class="amt">$1,000</span></div>
+    <div class="bline total"><span class="lbl">Trip total</span><span class="amt">~$36,100</span></div>
+    <div class="actions"><a class="btn rust" href="https://www.outdoorsy.com/rv-rental/spring_tx/2023_thor-motor-coach_venetian_343450-listing" target="_blank" rel="noopener">&#128664; See the exact coach</a></div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">The bottom line</h3>
+    <div class="mathrow split">
+      <div class="mathcell" style="flex:2"><div class="big">~$36,100</div><div class="lbl">all in, everything included</div></div>
+      <div class="mathcell"><div class="big">58%</div><div class="lbl">is the rigs, all in</div></div>
+    </div>
+    <div class="note" style="margin-top:14px">The rigs, all in (rental, fees, mileage, tax), are 58% of the trip. Good news: that number now comes from a live quote instead of a guess, and it landed about $4,600 under what we had budgeted.</div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Levers to bring it down</h3>
+    <ul class="todo">
+      <li><b>Ask the owner for a 10-night rate.</b><span>Message before booking and ask about a multi-night or fall discount across both rigs; even 5 to 10% is $700 to $1,400 back.</span></li>
+      <li><b>Protect the mileage cushion.</b><span>2,000 miles come included per rig and the loop pencils at about 2,750, so the overage is only $562.50 each. Tighten a detour or two and it shrinks further.</span></li>
+      <li><b>Generator hours are already handled.</b><span>40 free hours per rig, and every night of this plan sits on full hookups, so the generators barely run. Keep it that way and this line stays at zero.</span></li>
+      <li><b>Lean on the rig kitchens.</b><span>Every breakfast and a few lunches cooked in the coaches instead of out trims the food line fast with nine mouths.</span></li>
+    </ul>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <h3 class="slab">Not in the total, but plan for it</h3>
+    <ul class="todo">
+      <li><b>Refundable deposits.</b><span>Figure $1,500 to $2,500 held per rig during the trip. Not a real cost, but you need $3,000 to $5,000 of open credit sitting available.</span></li>
+      <li><b>What we're not paying for.</b><span>No tow car means no $2,000-plus flat-tow kit, no install, and no hookup routine at every stop. The Getting Around line above replaces all of it and costs less.</span></li>
+      <li><b>Fuel is a moving target.</b><span>Built on ~$3.85 diesel. A price spike by October could swing fuel a few hundred either way.</span></li>
+    </ul>
+    <div class="note" style="margin-top:12px"><b>Easy to flex:</b> this is the comfortable, everything-in number with a little breathing room. Want to make it bigger? A helicopter flight over the canyon for the group adds a few thousand. Want to trim? Drop a day or book the coaches direct from owners and it comes down a few thousand. Simple to dial either way once everyone weighs in.</div>
+  </div></div>
+
+</section>
+
+<footer class="foot">
+  <span class="slab">Two coaches. Nine cowboys. One canyon.</span>
+  Distances and drive times are approximate. Every park listed fits 40 to 45 foot coaches, but always confirm site length when booking, and book the canyon nights first.
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.tab[data-target]');
+  var panels = document.querySelectorAll('.panel');
+  function show(id){
+    for (var i=0;i<panels.length;i++){ panels[i].classList.toggle('active', panels[i].id===id); }
+    for (var j=0;j<tabs.length;j++){ tabs[j].classList.toggle('active', tabs[j].getAttribute('data-target')===id); }
+    if (window.location.hash !== '#'+id){
+      try { history.replaceState(null, '', '#'+id); } catch(e){}
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  for (var k=0;k<tabs.length;k++){
+    (function(b){
+      var id = b.getAttribute('data-target');
+      b.addEventListener('click', function(ev){ ev.preventDefault(); show(id); });
+    })(tabs[k]);
+  }
+  // Open to the section named in the URL hash, if valid
+  var h = (window.location.hash || '').replace('#','');
+  if (h && document.getElementById(h)){ show(h); }
+})();
+</script>
+})();
+</script>
+</body>
+</html>
